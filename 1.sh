@@ -1,3 +1,15 @@
+#!/bin/bash
+ 
+sudo apt update
+sudo apt install php-xml php-fpm libapache2-mod-php php-mysql php-gd php-imap php-curl php-mbstring mariadb-server -y
+sudo a2enmod proxy_fcgi setenvif
+sudo systemctl restart apache2
+sudo a2enconf php8.2-fpm
+sudo systemctl reload apache2
+sudo systemctl restart apache2.service
+sudo systemctl restart php8.2-fpm
+sudo systemctl restart mysql
+  
 cd /tmp
 git clone https://github.com/webpwnized/mutillidae
 if [ $? -ne '0' ]; then
